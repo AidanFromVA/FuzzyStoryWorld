@@ -1,34 +1,34 @@
 /*
- * - Name : DoorClickEvent.cs
- * - Writer : 유희수
- * - Sounds : 이병권
+  * - Name: DoorClickEvent.cs
+  * - Writer: Yoo Hee-su, Byungkwon Lee
+  * - Sounds: Byung-kwon Lee
 
- * - Content : 문을 클릭하는 튜토리얼을 통한 스크립트 진행
- *             -1) 문을 클릭하면 케릭터가 걸어가는 소리가 난다.
- *             -2) 게임을 시작하는 버튼을 누르면 소리가 난다.
- *
- * - History
- * 1) 2021-08-03 : 초기 개발
- * 2) 2021-08-12 : 코드 획일화 및 주석 처리
- * 3) 2021-08-24 : 게임건너뛰기 기능 구현 (김명현)
- * 3) 2021-08-25 : 게임 소리 나기 작업 (이병권)
- * 
- * - Variable 
- * mg_Hansel
- * mg_Gretel
- * mbtn_Door                                        문을 클릭하기 위한 버튼
- * mg_DoorClickBlink                                문 클릭을 지시하기 위한 애니메이션
- * mt_Text                                          자막을 출력하기 위한 텍스트
- * mvm_VoiceManager                                 나레이션을 위한 변수
- * mb_playOne                                       첫번째 나레이션의 실행 유무를 위한 flag
- * mb_playTwo                                       두번째 나레이션의 실행 유무를 위한 flag
- * 
- * - Function
- * v_GotoDoor()                                     문을 클릭해서 문에 헨젤과 그레텔이 다다를수있게 하는 함수
- * v_TutorialText()                                 문 클릭 이벤트 지시를 도와주기 위한 튜토리얼 텍스트와 애니메이션을 활성화해주는 함수
- * v_ChangeNextScene()                              다음 씬으로 넘어가기 위한 함수
- * v_ChangeNextSceneWhenSkipGame()                  게임이 스킵되는경우 다음씬으로 넘어가기 위한 함수
- */
+  * - Content: Script progression through a tutorial where you click on the door
+  * -1) When you click on the door, the sound of the character walking is heard.
+  * -2) When you press the button to start the game, a sound is heard.
+  *
+  * - History
+  * 1) 2021-08-03: Initial development
+  * 2) 2021-08-12: Code uniformity and comment processing
+  * 3) 2021-08-24: Game skip function implemented (Myeong-Hyun Kim)
+  * 3) 2021-08-25: Game sound work (Byung-kwon Lee)
+  *
+  * - Variable
+  *mg_Hansel
+  *mg_Gretel
+  * Button for clicking the mbtn_Door door
+  * mg_DoorClickBlink Animation to indicate door click
+  * mt_Text Text to output subtitles
+  * mvm_VoiceManager Variable for narration
+  * mb_playOne Flag for whether or not to run the first narration
+  * mb_playTwo Flag for whether or not to run the second narration
+  *
+  * - Function
+  * v_GotoDoor() A function that allows Hansel and Gretel to reach the door by clicking on it.
+  * v_TutorialText() Function that activates tutorial text and animation to help direct statement click events
+  * v_ChangeNextScene() Function to move to the next scene
+  * v_ChangeNextSceneWhenSkipGame() Function to move to the next scene when the game is skipped
+  */
 
 using System.Collections;
 using System.Collections.Generic;
