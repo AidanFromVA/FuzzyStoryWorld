@@ -1,45 +1,42 @@
-# 헨젤과 그레텔 - Episode5
+# Hansel and Gretel - Episode 5
 ***
- - 작성 및 제작 : 이윤교
- - 언어 : C#
+  - Language: C#
 ***
- - Update Log
-      1) 2021-08-13 : 초기 개발
-      2) 2021-08-18 : 코드 획일화 및 주석처리
-      3) 2021-08-19 : 효과음 재생 추가
-      4) 2021-08-19 : 리드미 초기 작성
+  -Update Log
+       1) 2021-08-13: Initial development
+       2) 2021-08-18: Code uniformity and comment processing
+       3) 2021-08-19: Added sound effect playback
+       4) 2021-08-19: Initial writing of Read Me
 ***
- - 구동화면 및 내용
+  - Running screen and contents
 <img src="https://user-images.githubusercontent.com/73592778/130014820-38b09cb8-684c-4817-8022-e1c0a163c441.png" width="500" height="220">
 
 <img src="https://user-images.githubusercontent.com/73592778/130014795-f271d0ca-a856-4415-849b-b46765ce9a7c.png" width="500" height="220">
 
 <img src="https://user-images.githubusercontent.com/73592778/130014693-799f33c2-a16c-414b-b1ec-0700e5aab678.png" width="500" height="220">
 
-    - 에피소드5 런 게임의 구동화면이다.
-    - 미니게임을 시작하려면 Start 버튼을 누른다.
-    - 화면을 클릭하면 플레이어가 점프를 한다.
-    - 조약돌이 다가오면 그 타이밍에 맞춰서 점프를 하게 하여 조약돌을 먹게한다.
-    - 주어진 조약돌을 다 먹게 되면 게임이 끝난다.
-    - 게임이 끝나면 Finish 버튼이 나오고 이 버튼을 누르면 다음 씬으로 넘어가게 된다.
+     - This is the running screen of Episode 5 Run Game.
+     - To start the minigame, press the Start button.
+     - Clicking on the screen causes the player to jump.
+     - When a pebble approaches, make it jump at the right timing to eat the pebble.
+     - The game ends when all the given pebbles are eaten.
+     - When the game is over, the Finish button appears and pressing this button moves on to the next scene.
 ***
-- H&G (Episode5) 구성 정보
-  - Image
-    - 구현에 필요한 이미지 파일들은 모두 FuzzStoryWorld/Assets/Image/ 에서 참고하였다.
-  - Scene
-    - Scene파일의 경우에도 FuzzStoryWorld/Assets/Scenes/1_05H&G.unity 에서 진행하였다.
-  - Prefab
-    - Gratel_Run.prefab : 뛰는 모습의 그레텔 프리팹이다.
-    - GoldCoin.prefab : 금색의 조약돌 프리팹이다.
-    - SliverCoin.prefab : 은색의 조약돌 프리팹이다.
-    - BronzeCoin.prefab : 동색의 조약돌 프리팹이다.
-  - Script
-    - GameManager.cs : Epi5에서 진행되는 게임의 메인 흐름을 조절한다.
-    - BackgroundScroller.cs : 달리는 효과를 증대시키기 위해 뒷 배경이 화면 우측에서 시작해서 화면 좌측으로 넘어가면 비활성화 한다.
-    - GroundScroller.cs : 달리는 효과를 증대시키기 위해 바닥이 화면 우측에서 시작해서 화면 좌측으로 넘어가면 비활성화 한다.
-    - PlayerController.cs : 달리는 플레이어의 역할을 관리한다.
-    - RespawnManager.cs : 게임을 시작할 때 조약돌을 미리 여러개를 생성하고 필요할 때 마다 활성화를 시키고 필요가 없어지면 비활성화를 시킨다.
-    - RockBase.cs : 오브젝트(조약돌)가 화면 우측에서 시작해서 화면 좌측으로 넘어가면 비활성화 한다.
+- H&G (Episode 5) composition information
+   -Image
+     - All image files required for implementation were referenced from FuzzStoryWorld/Assets/Image/.
+   -Scene
+     - In the case of scene files, it was also conducted at FuzzStoryWorld/Assets/Scenes/1_05H&G.unity.
+   -Prefab
+     - Gratel_Run.prefab: This is a Gretel prefab with a running appearance.
+     - GoldCoin.prefab: It is a gold-colored pebble prefab.
+     - SliverCoin.prefab: It is a silver cobblestone prefab.
+     - BronzeCoin.prefab: It is a bronze-colored pebble prefab.
+   -Script
+     - GameManager.cs: Controls the main flow of the game played in Epi5.
+     - BackgroundScroller.cs: To increase the running effect, disable the background when it starts from the right side of the screen and moves to the left side of the screen.
+     - GroundScroller.cs: To increase the running effect, disable when the floor starts from the right side of the screen and moves to the left side of the screen.
+     - PlayerController.cs: Manages the role of the running player.
+     - RespawnManager.cs: When starting the game, create several pebbles in advance, activate them when needed, and deactivate them when no longer needed.
+     - RockBase.cs: Deactivates when an object (pebble) starts from the right side of the screen and moves to the left side of the screen.
 ***
-
-
