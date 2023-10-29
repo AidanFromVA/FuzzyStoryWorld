@@ -1,6 +1,5 @@
 /*
  * - Name: BGMmanager.cs
- * - Writer: Cho Daegjun
  * - Content: The BGMmanager class is designed to play the necessary BGM sounds in the scene.
  * - Where the code is applied: for any scenes that need to have BGM sound...
  * - History -
