@@ -1,39 +1,34 @@
 /*
- * - Name : LoadVoice.cs
- * - Writer : 최대준
+ * - Name: LoadVoice.cs
  * 
- * - Content :
- * 기존 씬에 적용되었던 코드를 재사용하기 위해서 VoiceManager를 수정하는 과정에서 추가 생성된 스크립트. VoiceManager의 기존 역할을 담당해준다.
+ * - Content: A script created to reuse code previously applied to scenes during the modification of the VoiceManager. It handles the previous responsibilities of the VoiceManager.
  * 
- * - History
- * 1) 2021-08-24 : 코드 구현. 
- * 2) 2021-08-24 : 주석 작성.
- *  
+ * - History:
+ * 1) 2021-08-24: Code implementation.
+ * 2) 2021-08-24: Commented.
  *
- * - LoadVoice Member Variable 
+ * - LoadVoice Member Variables:
  * 
- * VoiceInfo[] mvifl_setVoiceInfoList           인스펙터창에서 음성 커스터마이징 할 수 있는 정보를 가진 struct 데이터이다. 구조체 안을 보면, {
-    public Voice svt_voiceType                  원하는 구글 TTS API의 기본 보이스를 설정하는 enum 데이터이다. 필요한 데이터만 정리를 하여 쓸것만 enum형식으로 재구성 하였다. enum 종류로는, KR_FEMALE_A, KR_FEMALE_B, KR_MALE_A, KR_MALE_B, EN_FEMALE_A, EN_FEMALE_B, EN_MALE_A, EN_MALE_B, JP_FEMALE_A, JP_FEMALE_B, JP_MALE_A, JP_MALE_B, CN_FEMALE_A, CN_FEMALE_B 로 구성되어 있다.
-    public string sstr_words                    음성이 무슨 말을 출력할지를 string 형식으로 저장하는 변수이다.
-    public float sf_pitch                       음성의 음조(높낮이)를 조절하는 변수이다.
-    public string sf_speakingRate               음성의 말 빠르기를 조절하는 변수이다.
-    public audioClip sac_voiceAudioClip         최종적으로 TTS 와의 통신으로 받아낸 음성 데이터를 저장하는 변수이다.
- }
- * mtts_getVoice                                TTS 통신을 정의한 클래스이다.
- * mb_CheckLoadComplete                         API 통신이 끝났다는 것을 알려주는 변수이다.
- * mn_checkCurInx                               스레드의 작업물의 결과로 인덱싱하기 위해서 필요한 변수이다. 현재 진행되는 씬의 index를 뜻하게 되며, 이 인덱스가 변경될 때마다 setter 에서는 코루틴과 쓰레드를 이용해 통신을 진행하게 된다.
- *  mquefa_queue                                메인 스레드와 생성된 스레드의 데이터 통신을 위한 큐로, 생성된 스레드는 이 큐에 작업물을 저장하게 되며, 그때 메인 스레드에서는 이 작업물을 통해 음성을 만들게 된다.
- * mth_workThread                               위에서 언급된 생성된 스레드이다. TTS 통신을 대신 작업하게 된다.
- * mb_checkSceneReady                           작업이 다 끝났다면 true로 만들어 다른 스크립트에서 감지할 수 있게 해주는 변수이다.
+ * VoiceInfo[] mvifl_setVoiceInfoList: A struct data containing customizable voice settings from the Inspector window. Inside the structure, you'll find:
+ *    public Voice svt_voiceType: An enum data that sets the default voice of the desired Google TTS API. We restructured it into enum format with only the necessary data. The available enum types are: KR_FEMALE_A, KR_FEMALE_B, KR_MALE_A, KR_MALE_B, EN_FEMALE_A, EN_FEMALE_B, EN_MALE_A, EN_MALE_B, JP_FEMALE_A, JP_FEMALE_B, JP_MALE_A, JP_MALE_B, CN_FEMALE_A, CN_FEMALE_B.
+ *    public string sstr_words: A variable that stores what words the voice will speak in a string format.
+ *    public float sf_pitch: A variable to adjust the pitch (high/low) of the voice.
+ *    public string sf_speakingRate: A variable to adjust the speaking rate of the voice.
+ *    public AudioClip sac_voiceAudioClip: A variable to store the final voice data received from TTS communication.
+ * mtts_getVoice: A class defining TTS communication.
+ * mb_CheckLoadComplete: A variable indicating when the API communication has finished.
+ * mn_checkCurInx: A variable needed for indexing the work of the thread. It represents the current scene index, and when this index changes, the setter uses coroutines and threads to perform communication.
+ * mquefa_queue: A queue for data communication between the main thread and created threads. The created threads store their work in this queue, and the main thread uses this work to generate voices.
+ * mth_workThread: The created thread mentioned above, responsible for TTS communication.
+ * mb_checkSceneReady: A variable that, when the work is done, is set to true to allow detection in other scripts.
  * 
- * - LoadVoice Member Function
+ * - LoadVoice Member Functions:
  *
- * Start()                                      VoiceManager 게임 오브젝트가 생성될 때 최초로 실행되는 함수로, 인스펙터 창에 입력된 음성 세팅값들을 통해 씬에서 필요한 음성 데이터를 만든다.
- * isPlaying()                                  현재 AudioSource를 통해 음성이 출력되고 있는지 아닌지를 반환해주는 함수. 출력되고 있다면 true, 아니라면 false를 반환한다.
- * runThread()                                  mth_workThread 스레드의 TTS 처리 코드가 실행되는 함수. 작업된 float array 반환 값은 mquefa_queue 큐에 저장하게 된다.
- * CheckQueue()                                 이 코루틴을 통해 각각씬들의 작업단계를 정의한다.
+ * Start(): Executed when the VoiceManager GameObject is created. Initializes the necessary voice data for scenes based on voice settings entered in the Inspector window.
+ * isPlaying(): Returns whether the AudioSource is currently playing audio. It returns true if audio is playing and false if not.
+ * runThread(): Function where the TTS processing code of the mth_workThread thread is executed. The processed float array result is stored in the mquefa_queue queue.
+ * CheckQueue(): Defines the work stages for each scene using this coroutine.
  */
-
 
 using System.Collections;
 using System.Collections.Generic;
@@ -124,12 +119,12 @@ public class LoadVoice : MonoBehaviour {
     private Thread mth_workThread;
     public bool mb_checkSceneReady = false;
 
-    // TTS를 위한 클래스를 선언한다.
-     void Awake() {
+    // Declares the class for TTS.
+    void Awake() {
         mtts_getVoice = TTS.GetInstance();
     }
 
-    // 큐를 한 프레임마다 검사를 하여 큐에 내용물이 있다면 AudioClip으로 만들고 없다면 대기하게 한다.
+    // Checks the queue every frame. If there is content in the queue, it is transformed into an AudioClip. If there's nothing, it waits.
     IEnumerator CheckQueue() {
         while (true) {
             if(mquefa_queue.Count > 0) {
@@ -142,16 +137,15 @@ public class LoadVoice : MonoBehaviour {
                 mb_CheckLoadComplete = true;
                 yield break;
             }
-            yield return null;  // 한 프레임마다 검사.
+            yield return null;  // Checks every frame.
         }
     }
 
-
-    // 생성된 스레드가 작업해야 하는 일을 정의한 함수이다.(TTS 통신)
+    // The function where the created thread should work (TTS communication).
     private void runThread(object nLoadId) {
         float tempSpeakRate = 0.8f;
         int n_LoadIndex = (int)nLoadId;
-        //load the audio clips to need...
+        // Load the audio clips as needed...
         if (float.TryParse(mvifl_setVoiceInfoList[n_LoadIndex].speakingRate, out tempSpeakRate)) {
             mquefa_queue.Enqueue(mtts_getVoice.CreateAudio(mvifl_setVoiceInfoList[n_LoadIndex].words, mvifl_setVoiceInfoList[n_LoadIndex].voiceType, mvifl_setVoiceInfoList[n_LoadIndex].pitch, tempSpeakRate));
         } else {
