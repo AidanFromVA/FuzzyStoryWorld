@@ -1,26 +1,26 @@
-﻿/*
- * - Name : BlinkObject.cs
- * - Writer : 김명현
+/*
+ * - Name: BlinkObject.cs
+ * - Writer: Kim Myung Hyun
  * 
- * - Content :
- * 반짝이는 효과를 주는 스크립트
+ * - Content:
+ * A script that adds a blinking effect to an object.
  * 
  * - History
- * 1. 2021-07-27 : 초안 작성
+ * 1. 2021-07-27: Initial draft
  *                  
- * - Variable 
- * mf_time                              시간 측정을 위한 변수
- * mb_BlinkFlag                         Flag값이 True면 오브젝트를 깜박인다.
- * mb_HideFlag                          Hide Flag가 켜져있으면 오브젝트를 숨긴다.
+ * - Variables 
+ * mf_time: Variable for time measurement.
+ * mb_BlinkFlag: If the Flag is True, the object blinks.
+ * mb_HideFlag: If the Hide Flag is on, the object is hidden.
  * 
- * -Function()
- * v_StartBlink()                       오브젝트를 반짝이게 한다.
- * v_StopBlink()                        반짝이는 효과를 제거하고 오브젝트출력
- * v_HideObject()                       오브젝트를 안보이게 설정
- * ChangBlinkFlagTrue()                 깜박이는 Flag값 True로 변경
- * ChangeBlinkFlagFalse()               깜박이는 Flag값 False로 변경
- * ChangeHideFlagTrue()                 오브젝트 숨기기 Flag값 True
- * ChangeHideFlagFalse()                오브젝트 숨기기 Flag값 False
+ * - Functions
+ * v_StartBlink(): Makes the object blink.
+ * v_StopBlink(): Removes the blinking effect and shows the object.
+ * v_HideObject(): Sets the object to be invisible.
+ * ChangBlinkFlagTrue(): Changes the Blink Flag to True.
+ * ChangeBlinkFlagFalse(): Changes the Blink Flag to False.
+ * ChangeHideFlagTrue(): Sets the object hiding Flag to True.
+ * ChangeHideFlagFalse(): Sets the object hiding Flag to False.
  * 
  */
 
@@ -37,23 +37,23 @@ public class BlinkObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(mb_BlinkFlag == true)
+        if (mb_BlinkFlag == true)
         {
             v_StartBlink();
         }
-        else if(mb_BlinkFlag == false && mb_HideFlag == false)
+        else if (mb_BlinkFlag == false && mb_HideFlag == false)
         {
             v_StopBlink();
         }
-        else if(mb_HideFlag == true)
+        else if (mb_HideFlag == true)
         {
             v_HideObject();
         }
     }
 
-    #region 함수 선언부
+    #region Function Declarations
     /// <summary>
-    /// 오브젝트를 반짝이게 한다.
+    /// Makes the object blink.
     /// </summary>
     public void v_StartBlink()
     {
@@ -70,42 +70,42 @@ public class BlinkObject : MonoBehaviour
         mf_time += Time.deltaTime;
     }
     /// <summary>
-    /// 반짝이는 효과를 제거하고 오브젝트출력
+    /// Removes the blinking effect and shows the object.
     /// </summary>
     public void v_StopBlink()
     {
         GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
     }
     /// <summary>
-    /// 오브젝트를 안보이게 설정
+    /// Sets the object to be invisible.
     /// </summary>
     public void v_HideObject()
     {
         GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
     }
     /// <summary>
-    /// 깜박이는 Flag값 True로 변경
+    /// Changes the Blink Flag to True.
     /// </summary>
     public void ChangBlinkFlagTrue()
     {
         mb_BlinkFlag = true;
     }
     /// <summary>
-    /// 깜박이는 Flag값 False
+    /// Changes the Blink Flag to False.
     /// </summary>
     public void ChangeBlinkFlagFalse()
     {
         mb_BlinkFlag = false;
     }
     /// <summary>
-    /// 오브젝트 숨기기 Flag값 True
+    /// Sets the object hiding Flag to True.
     /// </summary>
     public void ChangeHideFlagTrue()
     {
         mb_HideFlag = true;
     }
     /// <summary>
-    /// 오브젝트 숨기기 Flag값 False
+    /// Sets the object hiding Flag to False.
     /// </summary>
     public void ChangeHideFlagFalse()
     {
