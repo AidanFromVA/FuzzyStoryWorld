@@ -1,37 +1,34 @@
-# 헨젤과 그레텔 - Episode8
+# Hansel and Gretel - Episode 8
 ***
- - 작성 및 제작 : 이윤교
- - 언어 : C#
+  - Language: C#
 ***
- - Update Log
-   1) 2021-08-10 : 초기 개발
-   2) 2021-08-11 : 코드 획일화 및 주석처리
-   3) 2021-08-19 : 효과음 재생 추가
-   4) 2021-08-20 : 리드미 초기 작성
+  -Update Log
+    1) 2021-08-10: Initial development
+    2) 2021-08-11: Code uniformity and comment processing
+    3) 2021-08-19: Added sound effect playback
+    4) 2021-08-20: Initial writing of Read Me
 ***
- - 구동화면 및 내용
+  - Running screen and contents
 <img src="https://user-images.githubusercontent.com/73592778/130159994-459ab3eb-840c-462c-a3a6-9d70038785e9.png" width="500" height="220">
 <img src="https://user-images.githubusercontent.com/73592778/130160011-9c09c19f-96df-4cfd-ae51-1ba80ead210e.png" width="500" height="220">
 
-    - 에피소드8에 해당하는 장면과 미니 게임의 구동화면이다.
-    - 에피소드8 내용을 tts를 통해 읽어준다.
-    - 에피소드8의 미니게임을 시작하면 헨젤과 그레텔이 먹고싶어하는 사탕의 종류가 말풍선 위에 띄어지게된다.
-    - 헨젤과 그레텔이 먹고싶어하는 사탕의 종류를 과자집에서 드래그해서 헨젤과 그레텔 입으로 드래그해서 먹여준다.
-    - 과자집에 있는 사탕을 다 먹게되면 게임이 끝난다.
-    - 게임이 끝나면 다음 씬으로 넘어가게 된다.
+     - This is the scene corresponding to Episode 8 and the operating screen of the mini game.
+     - The contents of Episode 8 are read through tts.
+     - When you start the minigame in Episode 8, the type of candy that Hansel and Gretel want to eat appears in a speech bubble.
+     - Drag the type of candy that Hansel and Gretel want to eat from the candy store and feed it to Hansel and Gretel by dragging it into their mouths.
+     - The game ends when all the candy in the candy shop is eaten.
+     - When the game ends, it moves on to the next scene.
 ***
-- H&G (Episode8) 구성 정보
-  - Image
-    - 구현에 필요한 이미지 파일들은 모두 FuzzStoryWorld/Assets/Image/ 에서 참고하였다.
-  - Scene
-    - Scene파일의 경우에도 FuzzStoryWorld/Assets/Scenes/1_08H&G.unity 에서 진행하였다.
-  - Script
-    - Start_Epi8_Game.cs : Epi8 미니게임 시작
-    - CandyControl.cs : 배열로 남은 아이템 관리, 이 배열을 통해 랜덤으로 정답을 정하는 함수 및 아이템이 바뀌었는지 flag로 관리
-    - DragCandy.cs : 마우스 이벤트 스크립트, 마우스 드래그시 오브젝트가 따라 움직이게 수정
-    - RandomCandy.cs : 사탕(아이템)을 중복되지않게 랜덤으로 보여줌
-    - CheckAnswer.cs : 충돌 시 정답 확인 및 정답일 경우 오브젝트 삭제
+- H&G (Episode 8) composition information
+   -Image
+     - All image files required for implementation were referenced from FuzzStoryWorld/Assets/Image/.
+   -Scene
+     - In the case of scene files, it was also conducted at FuzzStoryWorld/Assets/Scenes/1_08H&G.unity.
+   -Script
+     - Start_Epi8_Game.cs: Start Epi8 minigame
+     - CandyControl.cs: Management of remaining items in an array, function to randomly determine the correct answer through this array, and management of whether the item has changed with a flag
+     - DragCandy.cs: Mouse event script, modify the object to move when the mouse is dragged.
+     - RandomCandy.cs: Shows candies (items) randomly without duplication.
+     - CheckAnswer.cs: Checks the correct answer in case of conflict and deletes the object if the correct answer is correct.
 
 ***
-
-
