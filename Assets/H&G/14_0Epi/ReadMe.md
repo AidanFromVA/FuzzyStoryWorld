@@ -1,25 +1,24 @@
-# 헨젤과 그레텔 - Episode14_0
+# Hansel and Gretel - Episode14_0
 ***
- - 작성 및 제작 : 유희수
- - 언어 : C#
+  - Language: C#
 ***
- - Update Log
-    1) 2021-08-27 : 초기 개발  
-    2) 2021-08-30 : 인코딩형식 변셩
+  -Update Log
+     1) 2021-08-27: Initial development
+     2) 2021-08-30: Encoding format changed
 ***
- - 구동화면 및 내용
-![시연2](https://user-images.githubusercontent.com/37494407/131275216-02599009-8cf1-46fe-83eb-76508eec2b47.PNG)
+  - Running screen and contents
+![Demonstration 2](https://user-images.githubusercontent.com/37494407/131275216-02599009-8cf1-46fe-83eb-76508eec2b47.PNG)
 
 
-    - 에피소드14_0에 해당하는 구동화면이다.
-    - 게임을 스킵한 경우 마지막장면과 매끄로운 진행을 위해 마녀에게 도망가는 연출을 추가한 씬
+     - This is the operating screen corresponding to Episode 14_0.
+     - If you skip the game, the final scene and the scene where you run away from the witch are added to ensure smooth progression.
 
 ***
-- H&G (intro) 구성 정보
-  - Image
-    - 구현에 필요한 이미지 파일들은 모두 FuzzStoryWorld/Assets/Image/ 에서 참고하였다.
-  - Scene
-    - Scene파일의 경우에도 FuzzStoryWorld/Assets/Scenes/1_03H&G.unity  에서 진행하였다.
-  - Script
-    - GotoForest.cs : 마녀에게서 도망가 숲속으로 도망가게끔 연출을 작성한 스크립트
+- H&G (intro) configuration information
+   -Image
+     - All image files required for implementation were referenced from FuzzStoryWorld/Assets/Image/.
+   -Scene
+     - In the case of scene files, it was also conducted at FuzzStoryWorld/Assets/Scenes/1_03H&G.unity.
+   -Script
+     - GotoForest.cs: A script written to run away from the witch into the forest.
 ***
