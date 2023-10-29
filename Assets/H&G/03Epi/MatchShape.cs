@@ -1,21 +1,21 @@
-﻿/*
- * - Name : MatchShape.class
- * - Writer : 유희수, 이병권
- * - Content : 헨젤과그레텔 Epi3 미니게임 - 각각의 오브젝트가 맞는 위치에 들어갔는지 확인하고, 틀리면 제자리로 돌아가게 해주는 스크립트
- *                                          1) 정답이면 소리가 나게 한다
- *        
- * - HISTORY
- * 2021-08-11 : 초기 개발
- * 2021-08-17 : 코드 획일화 및 주석처리
- * 2021-08-26 : 정답이 맞으면 소리가 나게 한다 (이병권)
- *
- * <Variable>
- * mgo_GameControl              "AnswerCheckEpi3" 스크립트 연결을 위한 변수
- * mv3_initPos;                 현재 위치 저장을 위한 변수
- *
- * <Function>
- * 
- */
+/*
+  * - Name: MatchShape.class
+  * - Writer: Hee-su Yoo, Byeong-kwon Lee
+  * - Content: Hansel and Gretel Epi3 Minigame - A script that checks whether each object is in the correct position and returns it to its original position if it is incorrect.
+  * 1) If the answer is correct, make a sound
+  *
+  * - HISTORY
+  * 2021-08-11: Initial development
+  * 2021-08-17: Code standardization and comment processing
+  * 2021-08-26: Make a sound when the answer is correct (Byung-kwon Lee)
+  *
+  * <Variable>
+  * mgo_GameControl "AnswerCheckEpi3" Variable for script connection
+  * mv3_initPos; Variable for storing current location
+  *
+  * <Function>
+  *
+  */
 
 using System.Collections;
 using System.Collections.Generic;
