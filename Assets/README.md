@@ -1,20 +1,20 @@
 # Project Guide 🧙🏻‍♂️
 ## Current Folder Structure
 > #### 🗂 *AddAssets*
-> > ⌙에셋 스토어에서 가져와 사용중인 프리팹들을 포함하고 있다.
+> > ⌙Contains prefabs taken from the Asset Store and used.
 > #### 🗂 *Animation*
-> > ⌙에니메이션 파일들을 보관
+> > ⌙Stores animation files
 > #### 🗂 *H&G*
-> > ⌙헨젤과 그레텔 동화 구현 코드와 씬이 들어있다.
+> > ⌙Contains Hansel and Gretel fairy tale implementation code and scenes.
 > #### 🗂 *Image*
-> > ⌙구현에 필요한 이미지 파일들을 포함하고 있다.
+> > ⌙Contains image files necessary for implementation.
 > #### 🗂 *Intro*
-> > ⌙인트로에 관련된 파일들이 담겨있다.
+> > ⌙Contains files related to the intro.
 > #### 🗂 *Scene*
-> > ⌙화면을 구성하는 씬 파일이 들어있다.
+> > ⌙Contains scene files that make up the screen.
 > #### 🗂 *Utils*
-> > ⌙코드 상에 공통으로 사용되거나 보조적으로 도움이 되는 코드, 유니티 프리팹이 존재한다.
+> > ⌙There are commonly used or auxiliary helpful codes and Unity Prefabs in the code.
 -------------
 ## README.md Change history
-> ##### *2021.8.9 최대준 create*
-> ##### *2021.8.25 김명현 최신화*
+> ##### *2021.8.9 Choi Dae-jun create*
+> ##### *2021.8.25 Latest update by Byungkwon Lee*
