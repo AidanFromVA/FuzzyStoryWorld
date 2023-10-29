@@ -1,6 +1,5 @@
 # Hansel and Gretel - Episode 1
 ***
-  - Written and produced by: Lee Ye-eun, Choi Dae-jun
   - Language: C#
 ***
   -Update Log
