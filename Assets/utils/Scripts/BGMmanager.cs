@@ -1,12 +1,12 @@
 /*
- * - Name : BGMmanager.cs
- * - Writer : 최대준
- * - Content : BGMmanager 클래스에서는 이름에서와 같이 씬에 필요한 BGM 사운드를 출력하도록 설계하였다.
- * - Where the code is applied : for any scenes to need making a BGM sound...
+ * - Name: BGMmanager.cs
+ * - Writer: Cho Daegjun
+ * - Content: The BGMmanager class is designed to play the necessary BGM sounds in the scene.
+ * - Where the code is applied: for any scenes that need to have BGM sound...
  * - History -
- * 2021-07-23 : 제작 완료
- * 2021-07-23 : 주석 처리
- * 2021-07-27 : 피드백에 의한 주석 변경.
+ * 2021-07-23: Production completed
+ * 2021-07-23: Commenting
+ * 2021-07-27: Comment changes based on feedback.
  *
  * - BGMmanager Member Variable 
  * 
@@ -14,23 +14,22 @@
  *
  * - BGMmanager Member Function
  *
- * Awake() : Start() 함수보다도 이전에 호출되는 함수로, 프리팹의 인스턴스화 직후에 호출된다. BGM이 겹치면 안되기에 또다른 BGMmanager 오브젝트 클래스가 존재하는지 확인후에 존재한다면 현재 이 오브젝트를 파괴하고, 존재하지 않는다면 이 오브젝트를 씬이 옮겨가면서 자동으로 파괴되지 않도록 DontDestroyOnLoad함수로 래핑해준다.
+ * Awake(): A function that is called before Start() and immediately after prefab instantiation. To prevent overlapping BGM, it checks if another BGMmanager object exists. If it exists, the current object is destroyed. If it doesn't exist, the object is wrapped with the DontDestroyOnLoad function to prevent it from being automatically destroyed when the scene changes.
  * 
  */
-
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// 본 클래스는 씬에 브금을 출력하는데에 목적이 있는 클래스이다.
+// This class is intended for playing background music (BGM) in scenes.
 public class BGMmanager : MonoBehaviour {
-    // Start함수보다 더 빨리 호출되는 함수로, BGMmanager 클래스가 전환되는 씬에 존재한다면 해당 클래스 오브젝트는 사라지게 된다.
+    // This function is called even before the Start function, and it is called immediately after the instantiation of a prefab. To prevent overlapping BGM, this function checks whether another BGMmanager object exists in the scene. If it exists, the current object is destroyed. If it doesn't exist, the object is marked with DontDestroyOnLoad to ensure it is not automatically destroyed when transitioning between scenes.
     void Awake() {
         var obj = FindObjectsOfType<BGMmanager>();
-        if(obj != null) {
+        if (obj != null) {
             if (obj.Length == 1) {
-            DontDestroyOnLoad(gameObject);
+                DontDestroyOnLoad(gameObject);
             } else {
                 Destroy(gameObject);
             }
