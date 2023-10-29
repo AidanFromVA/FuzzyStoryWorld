@@ -1,28 +1,27 @@
-﻿/*
- * - Name : CaptionControl.cs
- * - Writer : 유희수
+/*
+ * - Name: CaptionControl.cs
  * 
- * - Content : 자막을 컨트롤해서, 음성에 맞게 자막을 출력하는 스크립트
+ * - Content: A script that controls subtitles to display them according to the audio.
  *
  * - History
- * 1) 2021-08-24 : 초기 개발
- * 2) 2021-08-26 : 코드 수정
- * 3) 2021-08-30 : 주석 달기 & 변수명 획일화
+ * 1) 2021-08-24: Initial development
+ * 2) 2021-08-26: Code modifications
+ * 3) 2021-08-30: Adding comments & standardizing variable names
  * 
- * - Variable 
- * mn_LangIndex                                     현재 출력중인 음성의 언어 구별을 위한 인덱스  
- * mn_VoiceIndex                                    현재 출력중인 음성의 index를 알려줌
- * mg_CaptionPanel                                  자막이 출력되는 패널UI 연결
- * mt_CaptionText                                   언어에 따라 자막을 바꾸기 위한 텍스트 연결
- * mvm_VoiceManager                                 나레이션을 위한 변수
- * mb_playOne                                       첫번째 나레이션의 실행 유무를 위한 flag
- * mb_playTwo                                       두번째 나레이션의 실행 유무를 위한 flag
+ * - Variables 
+ * mn_LangIndex: Index to distinguish the language of the currently displayed audio
+ * mn_VoiceIndex: Index of the currently played audio
+ * mg_CaptionPanel: Connects to the panel UI where subtitles are displayed
+ * mt_CaptionText: Connects to the text used to change subtitles according to the language
+ * mvm_VoiceManager: Variable for narration
+ * mb_playOne: Flag for the execution status of the first narration
+ * mb_playTwo: Flag for the execution status of the second narration
  * 
- * - Function
- * v_GotoDoor()                                     문을 클릭해서 문에 헨젤과 그레텔이 다다를수있게 하는 함수
- * v_TutorialText()                                 문 클릭 이벤트 지시를 도와주기 위한 튜토리얼 텍스트와 애니메이션을 활성화해주는 함수
- * v_ChangeNextScene()                              다음 씬으로 넘어가기 위한 함수
- * v_ChangeNextSceneWhenSkipGame()                  게임이 스킵되는경우 다음씬으로 넘어가기 위한 함수
+ * - Functions
+ * v_GotoDoor(): Function to allow Hansel and Gretel to reach the door by clicking on it
+ * v_TutorialText(): Function to activate tutorial text and animations to assist with door click events
+ * v_ChangeNextScene(): Function to proceed to the next scene
+ * v_ChangeNextSceneWhenSkipGame(): Function to proceed to the next scene when the game is skipped
  */
 using System.Collections;
 using System.Collections.Generic;
@@ -52,7 +51,7 @@ public class CaptionControl : MonoBehaviour
     }
 
     public void ShowCaption(){
-        if (mn_LangIndex == 0){ //한국어 선택 -> 자막 없애기
+        if (mn_LangIndex == 0){ // Select Korean -> Hide subtitles
             this.gameObject.SetActive(false);
             OnButton.SetActive(false);
             OffButton.SetActive(false);
