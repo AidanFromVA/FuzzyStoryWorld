@@ -18,41 +18,41 @@
   *
   */
 
-using System.Collections;
+using System. Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class MatchPuzzles : MonoBehaviour{
-    private GameObject mgo_GameControl;                                                                             //AnswerCheckEpi2 스크립트 연결을 위한 변수
-    Vector3 mv3_initPos;                                                                                            //현재 위치 저장을 위한 변수
-    GameObject mg_SoundManager;
-    void Start(){
-        mv3_initPos = this.transform.position;                                                                      //현재 위치 저장 
-        mg_SoundManager = GameObject.Find("SoundManager");          // 사운드 매니저 게임오브젝트 연결
-        mgo_GameControl = GameObject.Find("GameControl");                                                           //오브젝트 연결     
-    }
+public class MatchPuzzles: MonoBehaviour{
+     private GameObject mgo_GameControl; //Variable for AnswerCheckEpi2 script connection
+     Vector3 mv3_initPos; //Variable for storing current location
+     GameObject mg_SoundManager;
+     void Start(){
+         mv3_initPos = this.transform.position; //Save current location
+         mg_SoundManager = GameObject.Find("SoundManager"); // Connect the sound manager game object
+         mgo_GameControl = GameObject.Find("GameControl"); //object connection
+     }
 
-    void Update(){
-        this.transform.position = Vector3.MoveTowards(this.transform.position, mv3_initPos, 8f * Time.deltaTime);   //현재 오브젝트가 mv3_initPos위치로 8f의 속력으로 가는 함수
-    }
+     void Update(){
+         this.transform.position = Vector3.MoveTowards(this.transform.position, mv3_initPos, 8f * Time.deltaTime); //Function where the current object moves to the mv3_initPos position at a speed of 8f
+     }
 
-    //퍼즐조각이 맞는 위치로 가면 그 위치의 밑그림을 보여주고, 해당 퍼즐조각은 사라지게 해주는 함수
-    //오브젝트들의 태그로 검사
-    private void OnTriggerStay2D(Collider2D col)
-    {
-        if (Input.GetMouseButtonUp(0))
-        {                                                                             //화면에서 마우스 클릭을 떼면
-            if (col.tag == this.tag)
-            {   
-                mg_SoundManager.GetComponent<SoundManager>().playSound("Put");                                                           //충돌체의 태그와 현재 오브젝트(퍼즐조각)의 태그가 같다면
-                col.gameObject.SetActive(false);                                                                    //충돌체 비활성화
-                Destroy(this.gameObject);                                                                          //현재 오브젝트 없애기  
-                mgo_GameControl.GetComponent<CheckAnswerEpi2>().v_CountAnswer();                                     //정답 개수를 올려주기 위한 함수 실행
-            }
-        }
-    }
+     //A function that shows a sketch of the location when the puzzle piece goes to the correct location and makes the puzzle piece disappear
+     //Inspect with object tags
+     private void OnTriggerStay2D(Collider2D col)
+     {
+         if (Input.GetMouseButtonUp(0))
+         { //When you release the mouse click on the screen
+             if (col.tag == this.tag)
+             {
+                 mg_SoundManager.GetComponent<SoundManager>().playSound("Put"); //If the tag of the colliding object and the tag of the current object (puzzle piece) are the same
+                 col.gameObject.SetActive(false); //Disable collider
+                 Destroy(this.gameObject); //Delete current object
+                 mgo_GameControl.GetComponent<CheckAnswerEpi2>().v_CountAnswer(); //Run function to increase the number of correct answers
+             }
+         }
+     }
  
  
 }
