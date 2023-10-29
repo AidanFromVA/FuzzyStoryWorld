@@ -1,11 +1,61 @@
 # 핸젤과그레텔 - Episode13
 ***
- - 작성 및 제작 : 김명현
  - 언어 : C#
 ***
  - Update Log
      1) 2021-08-05 : 처음 시작하면 구슬 아이템들이 생성되게 설정
-     2) 2021-08-06 : 아이템이 삭제되는 함수 작성
+     2) 2021-08-06 : 아이템이 삭제되는 함수 작성# Hansel and Gretel - Episode 13
+***
+  - Written and produced by: Myeong-Hyeon Kim
+  - Language: C#
+***
+  -Update Log
+      1) 2021-08-05: Set bead items to be created when first started.
+      2) 2021-08-06: Write a function to delete items
+      3) 2021-08-10: Set to be deleted when three or more items are gathered horizontally
+      4) 2021-08-12: Set to be deleted when three or more items are gathered vertically
+      5) 2021-08-17: Implementation of timeout function
+      6) 2021-08-20: Treasure background added, treasure size set to increase depending on score
+      7) 2021-08-23: Clock animation added, effect added when item explodes
+***
+  - Running screen and contents
+![Operation screen](https://user-images.githubusercontent.com/37494407/130718905-c15fd5c0-45d9-4727-abde-c009e76576bf.png)
+
+     - Episode 13 running screen.
+     - The score is displayed on the left side of the screen. (If the item explodes, the score increases)
+     - The remaining time is displayed on the right. As time passes, the white circle gradually disappears.
+     - When you drag an item to connect three or more of the same shape, the item explodes and a new item falls from above.
+    
+    
+***
+
+- H&G (Episode 13) composition information
+   -Animation
+     - Clock.controller: Animation management file for connecting clock animations
+     - ClockAnimation.anim: Animation where the clock grows and shrinks in red.
+     - Default_ClockAnimation.anim: Normal default animation
+   -Image
+     - All image files required for implementation were referenced from FuzzStoryWorld/Assets/Image/.
+   -Scene
+     - In the case of scene files, it was also conducted at FuzzStoryWorld/Assets/Scenes/1_13H&G.unity.
+   -Prefab
+     - Item1_Orange.prefab: This is an orange bead item prefab. SwapItem.cs file is applied.
+     - Item2_Red.prefab: This is a red bead item prefab. SwapItem.cs file is applied
+     - Item3_Purple.prefab: This is a purple bead item prefab. SwapItem.cs file is applied
+     - Item4_Blue.prefab: This is a blue bead item prefab. SwapItem.cs file is applied
+     - Item5_Green.prefab: This is a green bead item prefab. SwapItem.cs file is applied
+     - Item6_Yellow.prefab: This is a yellow bead item prefab. SwapItem.cs file is applied
+     - Item7_Star.prefab: This is a star-shaped item prefab. SwapItem.cs file is applied
+   -Script
+     - ControlUI.cs: A script for managing UI displayed on the screen. And it specifies the connection upon termination. Ex) Remaining time, score
+     - MainScript.cs: This is the main script when playing the game. Initial item creation, checking whether 3 or more items are collected, and item regeneration timing were defined.
+     - ManageItem.cs: This function contains functions to create and delete items.
+     - ManageItemArray.cs: This is a script that manages the array where item placement values are stored.
+     - ResetButton.cs: This is a script for operating the reset button, which deletes all game items and creates them again.
+     - SwapItem.cs: This is a script applied to item prefabs. It makes items draggable at the appropriate timing, and when dragging an item, it calculates the direction in which it was dragged.
+     - Treasure.cs: This is a script for managing the treasure effect on the background screen. As the score increases, the treasure effect also increases.
+    
+***
      3) 2021-08-10 : 가로로 아이템이 3개이상 모이면 삭제되게 설정
      4) 2021-08-12 : 세로로 아이템이 3개이상 모이면 삭제되게 설정
      5) 2021-08-17 : 타임아웃 기능 구현
