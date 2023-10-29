@@ -1,35 +1,35 @@
 # FuzzStoryWorld
 --------------
 ## Project Purpose
-> 본 제시 안은 어린이용 게임 앱 개발을 목적으로 하고있다. 주 소비자층인 어린 연령 층에 맞춰 정서에 맞게 아기자기한 분위기를 이끌어냈으며 안드로이드 플랫폼으로 제작할 예정이다. 어린이들을 위한 동화 앱을 제작할 예정이다. 첫번째 동화는 '헨젤과그레텔'로 시작된다.
+> The purpose of this proposal is to develop a game app for children. It has created a cute atmosphere to suit the emotions of the younger age group, which is the main consumer group, and plans to produce it on the Android platform. We plan to produce a fairy tale app for children. The first fairy tale begins with ‘Hansel and Gretel’.
 >  
-> 제작에 투입되는 인원은 총 6명이며 제작기간은 21-08-02 ~ 2021-08-31로 4주 예정되어있다.
+> The production period is scheduled for 4 weeks from 21-08-02 to 2021-08-31.
 --------------
 ## Project Prospect
-> 스마트폰을 사용하는 연령층이 점차 낮아지고 있다는 보고가 있다. 성인이 되어 처음 핸드폰을 접한 기성세대들과는 다르게 요즘 아이들의 경우 빠르면 유아시절부터 핸드폰을 이용하며 8세부터는 개인의 휴대폰을 소유하고있다. 스마트폰의 사용률은 75%에 달했다고 한다. 이렇게 소비가 많아진 만큼 수요가 늘어났으며 이미 10~20대를 저격한 아이템들은 공급이 넘쳐나고있다. 우리들은 이와는 다르게 미취학 아동들을 주 소비자층으로 잡았으며 광고 또는 유료화를 통해 수익성을 가져올 예정이다.
+> There are reports that the age group using smartphones is gradually decreasing. Unlike the older generation, who first encountered cell phones as adults, children these days use cell phones as early as childhood and own their own cell phones from the age of eight. The smartphone usage rate is said to have reached 75%. As consumption has increased, demand has increased, and the supply of items targeting those in their teens and twenties is already overflowing. Unlike this, we have targeted preschool children as our main consumer base and plan to bring in profitability through advertising or paying fees.
 --------------
 ## Project Idea
-> 유아들에게 있어 문화교육의 중요성은 예전부터 부각되어왔다. 유아들의 경우 문학작품을 분석하기 보다는 이를 경험하고 체득을 한다. 
-> 
-> 문화교육을 통해 다양한 경험을 통해 미적 감수성을 불러 일으킬수 있으며, 문학적 경험을 통해 상상력과 창조력을 기를수 있다. 
-> 
-> 2014년 미국 소아과 협회는 동화책을 소리내어 읽어 주는것의 중요성을 강조하였는데 소리내어 읽어준 아이와 그렇지 않은 아이 사이에 언어발달능력과 학업 성취도 면에서 큰 차이를 보였다고한다.
-> 
-> 우리는 이러한 영유아 시기에 문학작품의 중요성에 주목을 하였고 자칫 지루함을 느낄수있는 문학작품에 게임성을 더하여 아이들의 정서발달에 있어서와 게임을 통해 순발력 창의력 등 지루해하지 않으며 학습을 할 수 있는 환경구성에 주목하였다.
+> The importance of cultural education for young children has been highlighted for a long time. In the case of young children, rather than analyzing literary works, they experience them and learn from them.
+>
+> Through cultural education, aesthetic sensibility can be aroused through various experiences, and imagination and creativity can be developed through literary experiences.
+>
+> In 2014, the American Academy of Pediatrics emphasized the importance of reading storybooks aloud, and it was said that there was a big difference in language development ability and academic achievement between children who read aloud to children and children who did not.
+>
+> We paid attention to the importance of literary works during this period of infants and toddlers, and by adding game features to literary works that can be boring, we created an environment where children can learn without getting bored, such as their emotional development and quickness and creativity through games. paid attention to.
 --------------
 ## Current Folder Structure
 > #### 🗂 *H&G*
-> > ⌙헨젤과 그레텔 동화 구현 코드와 씬이 들어있다.
+> > ⌙Contains Hansel and Gretel fairy tale implementation code and scenes.
 > #### 🗂 *Image*
-> > ⌙구현에 필요한 이미지 파일들을 포함하고 있다.
+> > ⌙Contains image files necessary for implementation.
 > #### 🗂 *Scene*
-> > ⌙화면을 구성하는 씬 파일이 들어있다.
+> > ⌙Contains scene files that make up the screen.
 > #### 🗂 *Sound*
-> > ⌙게임에서 필요한 음악이나 효과음을 포함하고 있다.
+> > ⌙Contains music and sound effects necessary for the game.
 > #### 🗂 *Utils*
-> > ⌙코드 상에 공통으로 사용되거나 보조적으로 도움이 되는 코드, 유니티 프리팹이 존재한다.
+> > ⌙There are commonly used or auxiliary helpful codes and Unity Prefabs in the code.
 > #### 🗂 *AddAssets*
-> > ⌙에셋 스토어에서 가져와 사용중인 프리팹들을 포함하고 있다.
+> > ⌙Contains prefabs taken from the Asset Store and used.
 -------------
 ## Project Preview
 
@@ -46,15 +46,15 @@
 >
 ------------
 ## Project Role
-> **Developement** : choidj, devYoong, kimmhyeon, ooo2o5, Ryuhyis, yeeun426
+> **Developement** : choidj, devYoong, kimmhyeon, Byungkwon Lee, Ryuhyis, yeeun426
 >
-> **Director** : jinkabpark
+> **Project Manager** : ByungKwon Lee
 -------------
 ## Source
-> 동화 선택 이미지 
-> > 출처 : 어반브러시
+> Fairy tale selection image
+> > Source: Urban Brush
 -------------
 ## README.md Change history
-> ##### *2021.8.6 이윤교 create*
-> ##### *2021.8.9 이윤교 update*
+> ##### *2021.8.6 Byungkwon Lee create*
+> ##### *2021.8.9 Byungkwon Lee update*
 
