@@ -1,25 +1,24 @@
 /*
- * - Name : VoiceManager.cs
- * - Writer : 최대준
- * - Content : Text to Speech Class를 통해 최종적으로 AudioClip을 통해 음성을 출력하는 클래스이다. 여기서는 협업을 통해 작업하기 쉽도록 음성 세팅을 인스펙터에서 할 수 있도록 설정하게 되었다. 덕분에 VoiceManager 라는 프리팹 하나만 각각 씬으로 가져가 음성 세팅하고, 씬에 있는 스크립트 코드에 따라 VoiceManager 클래스의 playVoice함수만 호출해 주면 음성이 출력된다.
- * - Where the code is applied : for any scenes to need making a voice sounds...
+ * - Name: VoiceManager.cs
+ * - Content: A class that outputs voices using AudioClip via Text to Speech Class. This class allows voice settings to be made in the Inspector for easy collaboration. By creating one VoiceManager prefab per scene and configuring the voice settings in the Inspector, you can simply call the playVoice function from the scene's script code to produce voices.
+ * - Where the code is applied: for any scenes that need to make voice sounds...
  *
  * - How to Use -
  *
- * 1. VoiceManager라는 오브젝트를 프리팹으로 만들어두었다. 그것을 이용해서 쓰기만 하면 된다.
- * 2. VoiceManager 클래스의 안을 보자면, TTS 클래스를 선언한다. ex) TTS mtts_testTTS;
- * 3. TTS 클래스는 싱글톤 패턴이기 때문에 이미 사용중인 인스턴스가 있는지 확인하고 없으면 초기화한 인스턴스를 반환하는 함수를 호출한다. ex) mtts_textTTS = TTS.getInstance();
- * 4. VoiceManager는 인스펙터로 만들 보이스를 받아들이고 보이스를 TTS 클래스에서 구글 api를 통해서 audioclip으로 반환받게 된다.
- * 5. VoiceManager클래스는 AudioClip형태로 오디오를 가지고 있고, 클래스 안의 함수인 playVoice(id or name) 함수를 통해서 음성을 씬에 출력하게 된다.
+ * 1. Create an object named "VoiceManager" as a prefab. That's all you need to do.
+ * 2. In the VoiceManager class, declare the TTS class, e.g., TTS mtts_testTTS;
+ * 3. The TTS class is a singleton pattern, so check if there is an instance already in use and call a function that initializes and returns the instance if none exists, e.g., mtts_textTTS = TTS.getInstance();
+ * 4. The VoiceManager receives voice settings from the Inspector and retrieves the voice as an AudioClip through the Google API via the TTS class.
+ * 5. The VoiceManager class holds audio as AudioClip and outputs voices to the scene via the playVoice function.
  *
  * - History -
- * 1. 2021-07-19 : 구현
- * 2. 2021-07-20 : 주석 처리
- * 3. 2021-07-22 : thread에게 TTS 통신 처리 위임, TTS 통신 처리 중에 로드 화면 추가.
- * 4. 2021-07-23 : isPlaying() 함수 추가.
- * 5. 2021-07-27 : 피드백에 의한 주석 변경.
- * 6. 2021-08-10 : 피드백 요구사항 변경으로 인한 추가적인 기능 구현 시작.
- * 7. 2021-08-24 : 피드백 요구사항 변경으로 인한 실시간 로딩 방식으로 수정. 로딩 방식으로는 첫번째 씬부터, 한국어 영어 일본어 중국어 순으로 로딩 후 두번째 씬 언어 로딩 ... 이렇게 진행된다.
+ * 1. 2021-07-19: Implementation.
+ * 2. 2021-07-20: Commented.
+ * 3. 2021-07-22: Delegated TTS communication processing to threads, added loading screens during TTS processing.
+ * 4. 2021-07-23: Added isPlaying() function.
+ * 5. 2021-07-27: Comment changes based on feedback.
+ * 6. 2021-08-10: Additional features implemented based on feedback requirements.
+ * 7. 2021-08-24: Modified to a real-time loading approach based on feedback requirements. Loading is done sequentially, starting from the first scene and loading languages in the order of Korean, English, Japanese, and Chinese for the second scene, and so on.
 
  *
  * - Variable 
@@ -28,17 +27,17 @@
      EN,
      JP,
      CN
- } 현재 선택된 언어를 표현하기 위한 enum 변수이다.
- * mlva_LanguageVoices      현재 지원되는 언어의 스크립트 클래스이다.
- * mn_LanguageLength        현재 지원되는 언어의 숫자이다.
- * mct_CheckCountry         현재 선택된 언어를 뜻한다. 이 언어를 바꾸면, 자연스럽게 음성이 국가에 따라 나오게 된다.
- * mas_playVoice            음성을 출력하기 위한 컴포넌트.
+ } An enum variable used to represent the currently selected language.
+ * mlva_LanguageVoices: The script class for currently supported languages.
+ * mn_LanguageLength: The number of currently supported languages.
+ * mct_CheckCountry: Represents the currently selected language. Changing this language will naturally produce voices in the language of the country.
+ * mas_playVoice: Component for voice output.
  *
  * - Function
- * Awake()                  생성된 VMController 오브젝트를 씬 전환시 파괴되지 않도록 DonDestroyOnLoad에 저장하고, 로딩화면을 화면에 띄운다.
- * stopVoice()              현재 출력중인 음성의 출력을 멈춘다.
- * LoadLanguageByOrder()    정의한 순서대로 로딩을 시작한다.
- * TakeVoice()              이제 VoiceManager에는 AudioClip이 있기 않고, LoadVoice 스크립트에 존재하기 때문에 그것을 가져와 playVoice로 출력시킨다.
+ * Awake(): Ensures that the created VMController objects are not destroyed when the scene changes with DonDestroyOnLoad and displays a loading screen.
+ * stopVoice(): Stops the output of the currently playing voice.
+ * LoadLanguageByOrder(): Starts loading in the defined order.
+ * TakeVoice(): As VoiceManager now does not have AudioClip but LoadVoice scripts do, this function retrieves it and outputs it through playVoice.
  */
 
 using System.Collections;
@@ -46,11 +45,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
-// 씬에서 음성을 출력하는 게임오브젝트에 적용되는 VoiceManager 클래스이다.
+// This is the VoiceManager class applied to GameObjects in the scene to output voices.
 /// <summary>
-/// 씬에 VoiceManager의 인스펙터 창에서 설정한 음성 세팅값을 playVoice 함수를 통해 씬에 출력해주도록 도와주는 클래스.
+/// A class that helps to output voices in the scene based on voice settings defined in the VoiceManager's Inspector window.
 /// </summary>
 public class VoiceManager : MonoBehaviour {
     public enum Country {
@@ -73,8 +70,7 @@ public class VoiceManager : MonoBehaviour {
         }
     }
 
-
-    // VMController와 KRVoiceManager, ENVoiceManager, JPVoiceManager, CNVoiceManager는 씬이 전환되어도 유지되어야 하므로, DonDestroyOnLoad 함수로 Destroy 되지 않도록 한다. 또한 오브젝트가 만들어지자마자 코루틴을 통해 로딩 순서를 정의하여 로딩을 시작한다.
+    // VMController and KRVoiceManager, ENVoiceManager, JPVoiceManager, CNVoiceManager must be preserved even when the scene changes, so they are not destroyed using DonDestroyOnLoad. Additionally, a coroutine defines the loading order and starts loading as soon as objects are created.
     void Awake() {
         mn_LanguageLength = transform.childCount;
         mas_playVoice = gameObject.GetComponent<AudioSource>();
@@ -84,10 +80,8 @@ public class VoiceManager : MonoBehaviour {
             mlva_LanguageVoices[i] = transform.GetChild(i).GetComponent<LoadVoice>();
         }
         StartCoroutine(LoadLanguageByOrder());
-        // mgo_loadingScene = Instantiate(mc_loadingScene);
-        // mgo_loadingScene.SetActive(true);
     }
-    
+
     IEnumerator LoadLanguageByOrder() {
         int n_CurrentLoadIndex = 0;
         while (n_CurrentLoadIndex < mlva_LanguageVoices[0].mvifl_setVoiceInfoList.Length) {
@@ -101,28 +95,27 @@ public class VoiceManager : MonoBehaviour {
             n_CurrentLoadIndex++;
         }
         yield break;
-
     }
-    // 인스펙터창에 입력되는 음성 세팅 값을 저장하는 struct이다.
-    // 해당 스크립트가 들어간 게임 오브젝트가 생성될 때, 인스펙터창에 저장된 음성 세팅 값들을 통해서 스레드를 하나 생성하여 TTS 통신 작업을 위임시킨다.
-   
 
-    // 이 함수를 통해 저장했고 해당되는 AudioClip을 씬에 출력하게 된다. 
+    // A struct to save voice settings input in the Inspector window.
+    // When the GameObject containing this script is created, a thread is created to delegate the TTS communication task with the voice settings saved in the Inspector window.
+   
+    // This function produces the stored AudioClip and outputs it to the scene via the playVoice function.
     /// <summary>
-    /// 설정한 음성을 씬에 출력하는 함수.
+    /// A function that outputs the configured voice to the scene.
     /// </summary>
-    /// <param name="nPlayVoiceClipId">인스펙터 창에서 설정한 음성의 인덱스 값.</param>
+    /// <param name="nPlayVoiceClipId">The index value of the voice set in the Inspector window.</param>
     public void playVoice(int nPlayVoiceClipId) {
         if (!mas_playVoice.isPlaying) {
             mas_playVoice.PlayOneShot(TakeVoice(nPlayVoiceClipId));
         }
     }
 
-    // 음성이 출력되는지 확인, 출력되고 있다면 true, 출력되지 않고 있다면 false.
+    // Check if voice is playing, returns true if it's playing, and false otherwise.
     /// <summary>
-    /// 해당 씬의 VoiceManager 오브젝트의 컴포넌트 AudioSource에 음성이 출력되고 있는지 확인해주는 함수.
+    /// A function that checks if the AudioSource component of the VoiceManager object in the scene is currently playing a voice.
     /// </summary>
-    /// <returns> 출력중이면 true, 아니라면 false 값 반환. </returns>
+    /// <returns> Returns true if a voice is playing, and false if not. </returns>
     public bool isPlaying() {
         return mas_playVoice.isPlaying;
     }
