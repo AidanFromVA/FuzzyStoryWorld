@@ -1,18 +1,17 @@
 /*
- * - Name : ImgSizeResize.cs
- * - Writer : 최대준
- * - Content : 게임화면을 기기의 스크린 사이즈에 맞춰주는 스크립트.
+ * - Name: ImgSizeResize.cs
+ * - Content: A script that adjusts the game screen to fit the device's screen size. 
  * - History -
- * 2021-07-23 : 주석 작성
- * 2021-07-27 : 피드백에 의한 주석 변경.
+ * 2021-07-23: Commented
+ * 2021-07-27: Comment updates based on feedback.
  *
- * - ImgSizeResize Member variable
+ * - ImgSizeResize Member Variables
  *
- * sprImg : 인스펙터 창에서 받은 이미지(배경사진)를 저장하고 있는 변수이다.
+ * sprImg: A variable that stores the sprite (background image) received from the Inspector window.
  *
- * - ImgSizeResize Member function
+ * - ImgSizeResize Member Functions
  *
- * Start() : 인스펙터 창에서 받은 스프라이트(배경사진)와 캔버스를 기기의 스크린 사이즈에 맞게 조정하도록 초기화 시킨다.
+ * Start(): Initializes the script to adjust the sprite (background image) and canvas received from the Inspector window to fit the device's screen size.
  * 
  */
 
@@ -21,14 +20,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// 본 스크립트는 모든 스테이지에서 기기의 스크린에 맞게 배경사진을 맞춰주는 역할을 한다.
+// This script is responsible for adjusting the background image to fit the screen of the device in all stages.
 public class ImgSizeResize : MonoBehaviour {
     public Sprite sprImg = null;
 
-    // 인스펙터 창에서 받은 스프라이트(배경사진)와 캔버스를 기기의 스크린 사이즈에 맞게 조정하도록 초기화 시킨다.
+    // Initializes the script to adjust the sprite (background image) and canvas received from the Inspector window to fit the device's screen size.
     void Start() {
         GameObject tempImg = transform.GetChild(0).gameObject;
-        if(sprImg == null) {
+        if (sprImg == null) {
             RectTransform rt_saveTransform = (RectTransform)this.transform;
             rt_saveTransform.sizeDelta = new Vector2(Screen.width, Screen.height);
             return;
