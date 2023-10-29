@@ -1,22 +1,22 @@
-﻿/*
- * - Name : MatchPuzzles.class
- * - Writer : 유희수
- *          : 이병권
- * - Content : 헨젤과그레텔 Epi2 미니게임 - 각각의 퍼즐 조각이 맞는 위치에 들어갔는지 확인하고, 틀리면 제자리로 돌아가게 해주는 스크립트
- *                                           1) 퍼즐을 들었을 때 소리가 난다.
- *                                           2) 퍼즐을 맞쳤을 때 소리가 난다.
- *                                           3) 퍼즐을 틀렸을 때 소리가 난다. 
- * - HISTORY
- * 2021-08-11 : 초기 개발
- * 2021-08-12 : 코드 획일화 및 주석처리
- *
- * <Variable>
- * mgo_GameControl              "AnswerCheckEpi2" 스크립트 연결을 위한 변수
- * mv3_initPos;                 현재 위치 저장을 위한 변수
- *
- * <Function>
- * 
- */
+/*
+  * - Name: MatchPuzzles.class
+  * - Writer: Yoo Hee-su
+  * : Lee Byung-kwon
+  * - Content: Hansel and Gretel Epi2 Minigame - A script that checks whether each puzzle piece is in the correct position and returns it to its original place if it is incorrect.
+  * 1) When you pick up the puzzle, it makes a sound.
+  * 2) A sound is made when the puzzle is answered correctly.
+  * 3) A sound is heard when the puzzle is incorrect.
+  * - HISTORY
+  * 2021-08-11: Initial development
+  * 2021-08-12: Code standardization and comment processing
+  *
+  * <Variable>
+  * mgo_GameControl "AnswerCheckEpi2" Variable for script connection
+  * mv3_initPos; Variable for storing current location
+  *
+  * <Function>
+  *
+  */
 
 using System.Collections;
 using System.Collections.Generic;
