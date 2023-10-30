@@ -1,6 +1,6 @@
 /*
   * - Name: MatchShape.class
-  * - Writer: Hee-su Yoo, Byeong-kwon Lee
+  *
   * - Content: Hansel and Gretel Epi3 Minigame - A script that checks whether each object is in the correct position and returns it to its original position if it is incorrect.
   * 1) If the answer is correct, make a sound
   *
