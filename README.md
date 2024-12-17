@@ -1,4 +1,4 @@
-# FuzzStoryWorld
+# FuzzyStoryWorld
 --------------
 ## Project Purpose
 > The purpose of this proposal is to develop a game app for children. It has created a cute atmosphere to suit the emotions of the younger age group, which is the main consumer group, and plans to produce it on the Android platform. We plan to produce a fairy tale app for children. The first fairy tale begins with ‘Hansel and Gretel’.
